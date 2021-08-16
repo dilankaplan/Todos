@@ -1,0 +1,23 @@
+.navbar {
+    margin: 0%;
+    padding: 2rem;
+    font-size: large;
+    color: blueviolet;
+    font-weight: 600;
+    background-color: pink;
+}
+table{
+    width: 100%;
+    height: 1rem;
+    border-width: 0.5rem;
+    border: solid;
+}
+table th {
+   border: solid;
+}
+.schedule{
+    width: 2rem;
+    padding: 1em;
+    font-weight: 500;
+    background-color: pink;
+}
