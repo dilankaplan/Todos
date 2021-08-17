@@ -11,25 +11,59 @@ eventListener(); //Tüm event Listenerlar
 
 function eventListener(){
     form.addEventListener("submit",addTodo) ;
+    document.addEventListener("DOMContentloaded",loasAllTodosToUI);
 
 
+}
+function loadAllTodosToUI(){
+  let todos= getTodosFromStorage();
+  todos.forEach(function(todo){
+     addTodoToUI(todo);
+
+  })
 }
 function addTodo(e){
     const newTodo = todoInput.value.trim();
-    addTodoToUI(newTodo);
-
-
-
-
+    if(newTodo === ""){
+      
+        showAlert("danger","Lütfen bir Todo girin");
+    }
+    else{
+        addTodoToUI(newTodo);
+        addTodoToStorage(newTodo);
+        showAlert("success","Todo başarıyla eklendi")
+    }
+    
     e.preventDefault();
 }
+function getTodosFromStorage(){//Strogaedan bütün todoları alıcak
+    let todos;
+    if(localStorage.getItem("todos") === null){
+        todos=[];
+    }
+    else{
+        todos=JSON.parse(localStorage.getItem("todos"));
+    }
+    return todos;
+}
+function addTodoToStorage(newTodo){
+    let todos =getTodosFromStorage();
+    todos.push(newTodo);
+    localStorage.setItem("todos",JSON.stringify(todos));
+
+}
+function showAlert(type,message){
+    const alert =document.createElement("div");
+    alert.className = 'alert alert-${type}'
+    alert.textContent = message;
+    firstCardBody.appendChild(alert);
+     setTimeout(function(){
+         alert.remove();
+
+     },1000);
+
+}
 function addTodoToUI(newTodo){ //Stringleri list item olarak ekleyecek
-    /* <li class="list-group-item d-flex justify-content-between">
-    Todo 1
-    <a href = "#" class ="delete-item">
-        <i class = "fa fa-remove"></i>
-    </a>
-    </li> */
     //list item oluşturma
     const listItem =document.createElement("li");
     //link oluşturma
