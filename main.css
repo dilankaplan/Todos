@@ -1,3 +1,14 @@
 body{
    padding: 0%;
 }
+.card-header{
+   font-weight: 600;
+}
+.card-title{
+  font-weight: initial;
+}
+.background{
+    background-image: url(./image/pexels-snapwire-618608.jpg);
+    background-size: 100%;
+    
+}

@@ -7,6 +7,7 @@ const secondCardBody = document.querySelectorAll(".card-body")[1];
 const filter = document.querySelector("#filter");
 const clearButton = document.querySelector("#clear-todos");
 
+
 eventListeners();
 
 function eventListeners(){ // Tüm event listenerlar
